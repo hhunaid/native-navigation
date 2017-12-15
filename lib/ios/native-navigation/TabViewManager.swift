@@ -81,9 +81,4 @@ final class TabViewManager: RCTViewManager {
 //    return TabView(implementation: ReactNavigationCoordinator.sharedInstance.navigation)
   }
 
-  override func constantsToExport() -> [String: Any] {
-    return [
-      "VERSION": VERSION
-    ]
-  }
 }

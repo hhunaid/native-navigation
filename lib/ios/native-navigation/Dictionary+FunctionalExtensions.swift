@@ -41,11 +41,14 @@ extension Dictionary {
   }
 
 
-  public func mapValues<OutValue>(transform: (Value) throws -> OutValue) rethrows -> [Key: OutValue] {
+#if swift(>=3.2)
+#else
+public func mapValues<OutValue>(transform: (Value) throws -> OutValue) rethrows -> [Key: OutValue] {
     var dict = [Key: OutValue]()
     for (key, value) in self {
-      dict[key] = try transform(value)
+        dict[key] = try transform(value)
     }
     return dict
-  }
+}
+#endif
 }
