@@ -70,6 +70,9 @@ public class ReactNativeFragment extends Fragment implements ReactInterface,
   private ReadableMap initialConfig = ConversionUtil.EMPTY_MAP;
   private ReadableMap previousConfig = ConversionUtil.EMPTY_MAP;
   private ReadableMap renderedConfig = ConversionUtil.EMPTY_MAP;
+  public ReactNativeFragmentViewGroup getContentContainer() {
+    return contentContainer;
+  }
   private ReactNativeFragmentViewGroup contentContainer;
   private ReactRootView reactRootView;
   //  private ReactInterfaceManager activityManager;
@@ -271,24 +274,13 @@ public class ReactNativeFragment extends Fragment implements ReactInterface,
 
   @Override
   public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-    if (!enter) {
-      // React Native will flush the UI cache as soon as we unmount it. This will cause the view to
-      // disappear unless we delay it until after the fragment animation.
-      if (transit == FragmentTransaction.TRANSIT_NONE && nextAnim == 0) {
-        reactRootView.unmountReactApplication();
-      } else {
-        contentContainer.unmountReactApplicationAfterAnimation(reactRootView);
-
-      }
-      reactRootView = null;
-    }
     if (getActivity() instanceof ScreenCoordinatorComponent) {
       ScreenCoordinator screenCoordinator =
               ((ScreenCoordinatorComponent) getActivity()).getScreenCoordinator();
       if (screenCoordinator != null) {
         // In some cases such as TabConfig, the screen may be loaded before there is a screen
         // coordinator but it doesn't live inside of any back stack and isn't visible.
-        return screenCoordinator.onCreateAnimation(transit, enter, nextAnim);
+        return screenCoordinator.onCreateAnimation(this, transit, enter, nextAnim);
       }
     }
     return null;

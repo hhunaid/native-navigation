@@ -63,4 +63,8 @@ class BackStack {
             ", promise?=" + (promise != null) +
             '}';
   }
+
+  public boolean containsFragment(Fragment fragment) {
+    return fragments.contains(fragment);
+  }
 }

@@ -110,7 +110,7 @@ public class ScreenCoordinator {
     }
     BackStack bsi = getCurrentBackStack();
     ft
-            .detach(currentFragment)
+            .hide(currentFragment)
             .add(container.getId(), fragment)
             .addToBackStack(null)
             .commit();
@@ -248,7 +248,17 @@ public class ScreenCoordinator {
     Log.d(TAG, toString());
   }
 
-  public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+  public Animation onCreateAnimation(ReactNativeFragment fragment, int transit, boolean enter, int nextAnim) {
+    // only unmount when fragment is no longer in the backstack (replicates the iOS implementation)
+    if (!enter && !getCurrentBackStack().containsFragment(fragment)) {
+      // React Native will flush the UI cache as soon as we unmount it. This will cause the view to
+      // disappear unless we delay it until after the fragment animation.
+      if (transit == FragmentTransaction.TRANSIT_NONE && nextAnim == 0) {
+        fragment.getReactRootView().unmountReactApplication();
+      } else {
+         fragment.getContentContainer().unmountReactApplicationAfterAnimation(fragment.getReactRootView());
+      }
+    }
     if (!enter && nextPopExitAnim != 0) {
       // If this fragment was pushed on to the stack, it's pop exit animation will be
       // slide out right. However, we want it to be slide down in this case.
