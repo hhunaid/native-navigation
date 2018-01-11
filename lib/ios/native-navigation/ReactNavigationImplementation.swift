@@ -558,55 +558,62 @@ open class DefaultReactNavigationImplementation: ReactNavigationImplementation {
 
     if let navController = navigationController {
 
-      if let hidesBarsOnTap = boolForKey("hidesBarsOnTap", next) {
-        navController.hidesBarsOnTap = hidesBarsOnTap
-      }
-
-      if let hidesBarsOnSwipe = boolForKey("hidesBarsOnSwipe", next) {
-        navController.hidesBarsOnSwipe = hidesBarsOnSwipe
-      }
-
-      if let hidesBarsWhenKeyboardAppears = boolForKey("hidesBarsWhenKeyboardAppears", next) {
-        navController.hidesBarsWhenKeyboardAppears = hidesBarsWhenKeyboardAppears
-      }
-
-      if let hidden = boolForKey("hidden", next) {
-        navController.setNavigationBarHidden(hidden, animated: true)
-      }
-
-      if let isToolbarHidden = boolForKey("isToolbarHidden", next) {
-        navController.setToolbarHidden(isToolbarHidden, animated: true)
-      }
-
-      let navBar = navController.navigationBar
-
-      if let titleAttributes = textAttributesFromPrefix("title", next) {
-        navBar.titleTextAttributes = titleAttributes
-      }
-
-      if let backIndicatorImage = imageForKey("backIndicatorImage", next) {
-        navBar.backIndicatorImage = backIndicatorImage
-      }
-
-      if let backIndicatorTransitionMaskImage = imageForKey("backIndicatorTransitionMaskImage", next) {
-        navBar.backIndicatorTransitionMaskImage = backIndicatorTransitionMaskImage
-      }
-
-      if let backgroundColor = colorForKey("backgroundColor", next) {
-        navBar.barTintColor = backgroundColor
-      }
-
-      if let foregroundColor = colorForKey("foregroundColor", next) {
-        navBar.tintColor = foregroundColor
-      }
-
-      if let alpha = floatForKey("alpha", next) {
-        navBar.alpha = alpha
-      }
-
-      if let translucent = boolForKey("translucent", next) {
-        navBar.isTranslucent = translucent
-      }
+        if let hidesBarsOnTap = boolForKey("hidesBarsOnTap", next) {
+            navController.hidesBarsOnTap = hidesBarsOnTap
+        }
+        
+        if let hidesBarsOnSwipe = boolForKey("hidesBarsOnSwipe", next) {
+            navController.hidesBarsOnSwipe = hidesBarsOnSwipe
+        }
+        
+        if let hidesBarsWhenKeyboardAppears = boolForKey("hidesBarsWhenKeyboardAppears", next) {
+            navController.hidesBarsWhenKeyboardAppears = hidesBarsWhenKeyboardAppears
+        }
+        
+        if let hidden = boolForKey("hidden", next) {
+            navController.setNavigationBarHidden(hidden, animated: true)
+        }
+        
+        if let isToolbarHidden = boolForKey("isToolbarHidden", next) {
+            navController.setToolbarHidden(isToolbarHidden, animated: true)
+        }
+        
+        let navBar = navController.navigationBar
+        
+        if let titleAttributes = textAttributesFromPrefix("title", next) {
+            navBar.titleTextAttributes = titleAttributes
+        }
+        
+        if let backIndicatorImage = imageForKey("backIndicatorImage", next) {
+            navBar.backIndicatorImage = backIndicatorImage
+        }
+        
+        if let backIndicatorTransitionMaskImage = imageForKey("backIndicatorTransitionMaskImage", next) {
+            navBar.backIndicatorTransitionMaskImage = backIndicatorTransitionMaskImage
+        }
+        
+        if let backgroundColor = colorForKey("backgroundColor", next) {
+            navBar.barTintColor = backgroundColor
+        }
+        
+        if let foregroundColor = colorForKey("foregroundColor", next) {
+            navBar.tintColor = foregroundColor
+        }
+        
+        if let alpha = floatForKey("alpha", next) {
+            navBar.alpha = alpha
+        }
+        
+        if let translucent = boolForKey("translucent", next) {
+            navBar.isTranslucent = translucent
+        }
+        
+        if let backBarTitle = stringForKey("backButtonTitle", next) {
+            viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: backBarTitle,
+                                                                             style: .plain,
+                                                                             target: nil,
+                                                                             action: nil)
+        }
 
       //    navigationController?.navigationBar.barStyle = .blackTranslucent
       //    navigationController?.navigationBar.shadowImage = nil
