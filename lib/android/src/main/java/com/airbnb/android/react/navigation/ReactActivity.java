@@ -28,7 +28,7 @@ public abstract class ReactActivity extends ReactAwareActivity implements Screen
     screenCoordinator = new ScreenCoordinator(this, container, savedInstanceState);
 
     if (savedInstanceState == null) {
-      screenCoordinator.presentScreen(
+      screenCoordinator.createNewStack(
           getInitialScreenName(),
           getInitialScreenProps(),
           getInitialScreenOptions(),

@@ -196,6 +196,25 @@ public class ScreenCoordinator {
     Log.d(TAG, toString());
   }
 
+
+  public void createNewStack(
+      String moduleName,
+      @Nullable Bundle props,
+      @Nullable Bundle options,
+      @Nullable Promise promise) {
+    Fragment fragment = ReactNativeFragment.newInstance(moduleName, props);
+    BackStack bsi = new BackStack(getNextStackTag(), null, promise);
+    backStacks.push(bsi);
+    activity.getSupportFragmentManager().beginTransaction()
+        .setAllowOptimization(true)
+        .add(container.getId(), fragment)
+        .addToBackStack(bsi.getTag())
+        .commit();
+    activity.getSupportFragmentManager().executePendingTransactions();
+    activity.supportPostponeEnterTransition();
+    bsi.pushFragment(fragment);
+  }
+
   public void dismissAll() {
     while (!backStacks.isEmpty()) {
       dismiss(0, null, false);
