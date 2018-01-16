@@ -31,25 +31,25 @@ import java.util.Objects;
 public class DefaultNavigationImplementation implements NavigationImplementation {
   private static final String TAG = "DefaultImplementation";
 
-  class Defaults {
-    int foregroundColor;
-    int screenColor;
-    int backgroundColor;
-    int statusBarColor;
-    boolean statusBarTranslucent;
-    float elevation;
-    float alpha;
-    Drawable overflowIconSource;
-    boolean displayHomeAsUp;
-    boolean homeButtonEnabled;
-    boolean showHome;
-    boolean showTitle;
-    boolean showCustom;
-    boolean useLogo;
-    boolean useShowHideAnimation;
-    boolean hideOnScroll;
-    int hideOffset;
-    int textAlignment;
+  public static class Defaults {
+    public int foregroundColor;
+    public int screenColor;
+    public int backgroundColor;
+    public int statusBarColor;
+    public boolean statusBarTranslucent;
+    public float elevation;
+    public float alpha;
+    public Drawable overflowIconSource;
+    public boolean displayHomeAsUp;
+    public boolean homeButtonEnabled;
+    public boolean showHome;
+    public boolean showTitle;
+    public boolean showCustom;
+    public boolean useLogo;
+    public boolean useShowHideAnimation;
+    public boolean hideOnScroll;
+    public int hideOffset;
+    public int textAlignment;
   }
 
   private final Defaults defaults;
@@ -387,11 +387,25 @@ public class DefaultNavigationImplementation implements NavigationImplementation
       }
 
       if (firstCall || boolHasChanged("displayHomeAsUp", prev, next)) {
+        boolean displayHomeAsUp;
         if (next.hasKey("displayHomeAsUp")) {
-          boolean displayHomeAsUp = next.getBoolean("displayHomeAsUp");
-          bar.setDisplayHomeAsUpEnabled(displayHomeAsUp);
+          displayHomeAsUp = next.getBoolean("displayHomeAsUp");
+
         } else {
-          bar.setDisplayHomeAsUpEnabled(defaults.displayHomeAsUp);
+          displayHomeAsUp = defaults.displayHomeAsUp;
+        }
+        bar.setDisplayHomeAsUpEnabled(displayHomeAsUp);
+
+        if (displayHomeAsUp && firstCall || mapHasChanged("backIconColor", prev, next)) {
+          Integer backIconColor;
+          if (next.hasKey("backIconColor")) {
+            backIconColor = next.getInt("backIconColor");
+          } else {
+            backIconColor = foregroundColor;
+          }
+          Drawable upArrow = toolbar.getNavigationIcon();
+          upArrow.setColorFilter(backIconColor, PorterDuff.Mode.SRC_ATOP);
+          toolbar.setNavigationIcon(upArrow);
         }
       }
 
