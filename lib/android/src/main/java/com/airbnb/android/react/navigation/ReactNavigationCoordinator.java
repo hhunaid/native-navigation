@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.BuildConfig;
 
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -179,7 +180,7 @@ public class ReactNavigationCoordinator {
   }
 
   public void start(final Application application) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(application)) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(application) && BuildConfig.DEBUG) {
       handleOverlayPermissionsMissing(application);
       return;
     }
