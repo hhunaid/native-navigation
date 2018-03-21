@@ -223,7 +223,10 @@ public class ScreenCoordinator {
   }
 
   public void onBackPressed() {
-    pop();
+    ReactNativeFragment fragment = (ReactNativeFragment) getCurrentBackStack().peekFragment();
+    if (!fragment.willHandleBackPress()) {
+      pop();
+    }
   }
 
   public void pop() {

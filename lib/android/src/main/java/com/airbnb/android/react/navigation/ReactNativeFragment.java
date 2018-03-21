@@ -47,8 +47,9 @@ public class ReactNativeFragment extends Fragment implements ReactInterface,
   private static final String ON_APPEAR = "onAppear";
   private static final String INSTANCE_ID_PROP = "nativeNavigationInstanceId";
   private static final String ON_BUTTON_PRESS = "onButtonPress";
+  private static final String ON_BACK_PRESS = "onBackPress";
   private static final String INITIAL_BAR_HEIGHT_PROP = "nativeNavigationInitialBarHeight";
-  private static final int RENDER_TIMEOUT_IN_MS = 1700; // TODO(lmr): put this back down when done debugging
+  private static final int RENDER_TIMEOUT_IN_MS = 200; // TODO(lmr): put this back down when done debugging
 
   // An incrementing ID to identify each ReactNativeActivity instance (used in `instanceId`)
   private static int UUID = 1;
@@ -464,5 +465,13 @@ public class ReactNativeFragment extends Fragment implements ReactInterface,
           PermissionListener listener) {
     permissionListener = listener;
     requestPermissions(permissions, requestCode);
+  }
+
+  public boolean willHandleBackPress() {
+    if (this.renderedConfig.hasKey("hidesBackButton") && this.renderedConfig.getBoolean("hidesBackButton")) {
+      emitEvent(ON_BACK_PRESS, null);
+      return true;
+    }
+    return false;
   }
 }
