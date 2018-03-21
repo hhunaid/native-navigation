@@ -2,6 +2,7 @@ package com.airbnb.android.react.navigation;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.ColorStateList;
@@ -83,7 +84,7 @@ public class DefaultNavigationImplementation implements NavigationImplementation
   private static int TextAlignmentFromString(String s) {
     switch(s) {
       case "center":
-          return View.TEXT_ALIGNMENT_CENTER;
+        return View.TEXT_ALIGNMENT_CENTER;
       case "right":
         return View.TEXT_ALIGNMENT_VIEW_END;
       case "left":
@@ -244,6 +245,7 @@ public class DefaultNavigationImplementation implements NavigationImplementation
   // NOTE(lmr):
   // The problem we have now is that we don't know when a "default" is different
   // than the system default, so those properties start off out of sync...
+  @SuppressLint("RestrictedApi")
   public void reconcileNavigationProperties(
       ReactInterface component,
       ReactToolbar toolbar,
@@ -328,7 +330,7 @@ public class DefaultNavigationImplementation implements NavigationImplementation
       if (firstCall || numberHasChanged("elevation", prev, next)) {
         if (next.hasKey("elevation")) {
           Double elevation = next.getDouble("elevation");
-            toolbar.setElevation(elevation.floatValue());
+          toolbar.setElevation(elevation.floatValue());
         } else {
           toolbar.setElevation(defaults.elevation);
         }
@@ -365,6 +367,17 @@ public class DefaultNavigationImplementation implements NavigationImplementation
         toolbar.setOverflowIconSource(next.getMap("overflowIcon"));
       } else {
 
+      }
+    }
+
+    //TODO: add the navigation button back when this property is changed to false
+    if (firstCall || boolHasChanged("hidesBackButton", prev, next)) {
+      boolean hidesBackButton = false;
+      if (next.hasKey("displayHomeAsUp")) {
+        hidesBackButton = next.getBoolean("displayHomeAsUp");
+      }
+      if (hidesBackButton) {
+        toolbar.setNavigationIcon(null);
       }
     }
 
@@ -483,10 +496,10 @@ public class DefaultNavigationImplementation implements NavigationImplementation
     }
 
     reconcileStatusBarStyle(
-      component.getActivity(),
-      prev,
-      next,
-      firstCall
+        component.getActivity(),
+        prev,
+        next,
+        firstCall
     );
 
     // TODO(lmr): this doesnt appear to work like i think it should.
