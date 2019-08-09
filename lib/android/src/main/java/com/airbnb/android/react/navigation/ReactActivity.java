@@ -1,10 +1,12 @@
 package com.airbnb.android.react.navigation;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.ViewGroup;
+
 import com.airbnb.android.R;
+
+import androidx.annotation.Nullable;
 
 public abstract class ReactActivity extends ReactAwareActivity implements ScreenCoordinatorComponent {
   private static final String TAG = ReactActivity.class.getSimpleName();

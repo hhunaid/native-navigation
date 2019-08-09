@@ -1,7 +1,8 @@
 package com.airbnb.android.react.navigation;
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
 
 /**
  * Helper to create higher fidelity transition names. <p> This can be used by shared element

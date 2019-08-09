@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,6 +24,8 @@ import com.facebook.imagepipeline.image.QualityInfo;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.uimanager.PixelUtil;
+
+import androidx.appcompat.widget.Toolbar;
 
 // TODO(lmr): we might want to make this an abstract class and have a default implementation
 public class ReactToolbar extends Toolbar {

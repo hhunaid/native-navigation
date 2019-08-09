@@ -2,10 +2,6 @@ package com.airbnb.android.react.navigation;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.support.annotation.AttrRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -13,6 +9,11 @@ import android.widget.FrameLayout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import androidx.annotation.AttrRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentManager;
 
 /**
  * This is a custom ViewGroup that draws the fragment that at the end of the back stack on top.

@@ -1,12 +1,13 @@
 package com.airbnb.android.react.navigation;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 import com.facebook.react.ReactRootView;
+
+import androidx.annotation.Nullable;
 
 /**
  * Root ViewGroup for {@link ReactNativeFragment} that allows it to get KeyEvents.
@@ -17,7 +18,8 @@ public class ReactNativeFragmentViewGroup extends FrameLayout {
     boolean onKeyUp(int keyCode, KeyEvent event);
   }
 
-  @Nullable private ReactRootView reactRootView;
+  @Nullable
+  private ReactRootView reactRootView;
   @Nullable private KeyListener keyListener;
 
   public ReactNativeFragmentViewGroup(Context context) {

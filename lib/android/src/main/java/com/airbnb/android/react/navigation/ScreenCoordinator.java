@@ -5,13 +5,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.AnimRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.Fade;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -26,6 +19,14 @@ import com.facebook.react.common.MapBuilder;
 
 import java.util.Map;
 import java.util.Stack;
+
+import androidx.annotation.AnimRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import static com.airbnb.android.react.navigation.ReactNativeIntents.EXTRA_CODE;
 
@@ -42,7 +43,8 @@ public class ScreenCoordinator {
     Push(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right),
     Fade(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
 
-    @AnimRes int enter;
+    @AnimRes
+    int enter;
     @AnimRes int exit;
     @AnimRes int popEnter;
     @AnimRes int popExit;

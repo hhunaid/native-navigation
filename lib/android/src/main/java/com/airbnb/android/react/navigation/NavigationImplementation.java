@@ -1,9 +1,10 @@
 package com.airbnb.android.react.navigation;
 
-import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.facebook.react.bridge.ReadableMap;
+
+import androidx.appcompat.app.ActionBar;
 
 interface NavigationImplementation {
   void reconcileNavigationProperties(

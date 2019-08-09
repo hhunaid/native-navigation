@@ -1,11 +1,9 @@
 package com.airbnb.android.react.navigation;
 
-import android.support.v4.app.FragmentActivity;
 
 import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReadableMap;
-
-import java.util.Map;
+import androidx.fragment.app.FragmentActivity;
 
 public interface ReactInterface {
   // @formatter:off

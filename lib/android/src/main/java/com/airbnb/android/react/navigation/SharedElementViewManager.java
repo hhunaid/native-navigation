@@ -1,6 +1,5 @@
 package com.airbnb.android.react.navigation;
 
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 
 import com.airbnb.android.R;
@@ -12,6 +11,8 @@ import com.facebook.react.views.image.ReactImageView;
 import com.facebook.react.views.view.ReactViewGroup;
 
 import java.util.Map;
+
+import androidx.core.view.ViewCompat;
 
 import static com.airbnb.android.react.navigation.ReactNativeUtils.VERSION_CONSTANT_KEY;
 

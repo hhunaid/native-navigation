@@ -2,10 +2,11 @@ package com.airbnb.android.react.navigation;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.AttributeSet;
 import android.view.View;
 import com.facebook.react.bridge.ReadableMap;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * This view is used as a data structure to hold configuration for a Tab in a
