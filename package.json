@@ -1,44 +1,37 @@
 {
   "_args": [
     [
-      "native-navigation@git+https://github.com/hhunaid/native-navigation.git",
-      "/home/pakwheels/Documents/Projects/pakwheels_react"
+      "git+https://github.com/pakwheels/native-navigation.git",
+      "/Users/rohail/workspace/code/android/pakwheels_react"
     ]
   ],
-  "_from": "git+https://github.com/hhunaid/native-navigation.git",
-  "_id": "native-navigation@0.2.1",
+  "_from": "git+https://github.com/pakwheels/native-navigation.git",
+  "_id": "native-navigation@git+https://github.com/pakwheels/native-navigation.git#fb152e1cbbe5675ba053399cf1b5032beb1ba361",
+  "_inBundle": false,
   "_inCache": true,
   "_installable": true,
+  "_integrity": "",
   "_location": "/native-navigation",
   "_phantomChildren": {},
   "_requested": {
-    "hosted": {
-      "directUrl": "https://raw.githubusercontent.com/hhunaid/native-navigation/master/package.json",
-      "gitUrl": "git://github.com/hhunaid/native-navigation.git",
-      "httpsUrl": "git+https://github.com/hhunaid/native-navigation.git",
-      "shortcut": "github:hhunaid/native-navigation",
-      "ssh": "git@github.com:hhunaid/native-navigation.git",
-      "sshUrl": "git+ssh://git@github.com/hhunaid/native-navigation.git",
-      "type": "github"
-    },
-    "name": "native-navigation",
-    "raw": "native-navigation@git+https://github.com/hhunaid/native-navigation.git",
-    "rawSpec": "git+https://github.com/hhunaid/native-navigation.git",
-    "scope": null,
-    "spec": "git+https://github.com/hhunaid/native-navigation.git",
-    "type": "hosted"
+    "type": "git",
+    "raw": "git+https://github.com/pakwheels/native-navigation.git",
+    "rawSpec": "git+https://github.com/pakwheels/native-navigation.git",
+    "saveSpec": "git+https://github.com/pakwheels/native-navigation.git",
+    "fetchSpec": "https://github.com/pakwheels/native-navigation.git",
+    "gitCommittish": null
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "git+https://github.com/hhunaid/native-navigation.git#fb152e1cbbe5675ba053399cf1b5032beb1ba361",
+  "_resolved": "git+https://github.com/pakwheels/native-navigation.git#fb152e1cbbe5675ba053399cf1b5032beb1ba361",
   "_shasum": "0aafb13aa449c2ac95575ec4bc4dc8145826fb19",
   "_shrinkwrap": null,
-  "_spec": "native-navigation@git+https://github.com/hhunaid/native-navigation.git",
-  "_where": "/home/pakwheels/Documents/Projects/pakwheels_react",
+  "_spec": "git+https://github.com/pakwheels/native-navigation.git",
+  "_where": "/Users/rohail/workspace/code/android/pakwheels_react",
   "author": {
-    "email": "leland.richardson@airbnb.com",
-    "name": "Leland Richardson"
+    "name": "Leland Richardson",
+    "email": "leland.richardson@airbnb.com"
   },
   "bugs": {
     "url": "https://github.com/airbnb/native-navigation/issues"
@@ -76,8 +69,6 @@
     "react": ">=15.3.1",
     "react-native": ">=0.42"
   },
-  "readme": "# Native Navigation\n\n[![Join the chat at https://gitter.im/airbnb/native-navigation](https://badges.gitter.im/airbnb/native-navigation.svg)](https://gitter.im/airbnb/native-navigation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n[![npm Version](https://img.shields.io/npm/v/native-navigation.svg)](https://www.npmjs.com/package/native-navigation) \n[![License](https://img.shields.io/npm/l/native-navigation.svg)](https://www.npmjs.com/package/native-navigation) \n[![Build Status](https://travis-ci.org/airbnb/native-navigation.svg)](https://travis-ci.org/airbnb/native-navigation) \n\n## DISCLAIMER\n\n**This project is currently in beta**. \n\nMany of the core APIs are subject to change, and we do not consider this project \"Production Ready\" until it hits a 1.0 release. We encourage people to try this library out and provide us feedback as we get it to a stable state we are confident in, but not to rely on it for production use until then.\n\nRead more about our [Roadmap to 1.0](/docs/roadmap.md)\n\n## Contents\n\n- [Installation](#installation)\n- [Running the Example Project](#running-the-example-project)\n- [Guides](#guides)\n- [API Documentation](#api-documentation)\n- [Related Projects and Alternatives](#related-projects-and-alternatives)\n- [Contributing](#contributing)\n- [FAQ](#faq)\n- [License](#license)\n\n## Installation\n\nSee the [Installation Guide](/docs/installation.md)\n\n## Running the Example Project\n\nTo run the example project, first clone this repo:\n\n```bash\ngit clone https://github.com/airbnb/native-navigation.git\ncd native-navigation\n```\n\nBoth [`npm`](https://nodejs.org/) and the ruby [`bundler`](http://bundler.io/) gem are needed to run the project.\n\n```bash\nnpm install\n```\n\n```bash\nnpm start\n```\n\nThen, in another CLI window:\n\nTo run on iOS: `npm run run:ios`\n\nTo run on Android: `npm run run:android`\n\n\n## [Guides](/docs/guides/README.md)\n\n- [Basic Usage](/docs/guides/basic-usage.md)\n- [Integrating with existing apps](/docs/guides/integrating-with-existing-apps.md)\n- [Custom Navigation Implementations](/docs/guides/custom-navigation-implementations.md)\n- [Tabs](/docs/guides/tabs.md)\n- [Deep Linking](/docs/guides/deep-linking.md)\n- [Platform Differences](/docs/guides/platform-differences.md)\n- [Project Structure](/docs/guides/project-structure.md)\n- [Shared Element Transitions](/docs/guides/shared-element-transitions.md)\n\n## [API Documentation](/docs/api/README.md)\n\n- [`Navigator.registerScreen(...)`](/docs/api/navigator/registerScreen.md)\n- [`Navigator.push(...)`](/docs/api/navigator/push.md)\n- [`Navigator.present(...)`](/docs/api/navigator/present.md)\n- [`Navigator.pop(...)`](/docs/api/navigator/pop.md)\n- [`Navigator.dismiss(...)`](/docs/api/navigator/dismiss.md)\n- [`Config`](/docs/api/navigator-config.md)\n- [`Spacer`](/docs/api/navigator-spacer.md)\n- [`Tab`](/docs/api/navigator-tab.md)\n- [`TabBar`](/docs/api/navigator-tab-bar.md)\n- [`SharedElement`](/docs/api/navigator-shared-element.md)\n- [`SharedElementGroup`](/docs/api/navigator-shared-element-group.md)\n\n\n## Related Projects and Alternatives\n\nNative Navigation is a navigation library for the React Native platform. There are many navigation libraries in the React Native ecosystem. Native Navigation is unique in that it is built on top of the iOS and Android platform navigational components, and is thus more \"native\" than most other options which implement navigation from scratch in JavaScript on top of base React Native components like `View` and `Animated`.\n\n[React Native Navigation](https://github.com/wix/react-native-navigation) by Wix engineering is an alternative library that uses \"Native\" navigation components of each platform, and has been around longer than Native Navigation. If you need a stable / production-ready navigation library *today* that uses native platform based navigation components, we recommend you check this library out.\n\nIf you are investigating navigation solutions and you are okay with JavaScript-based solutions, we also encourage you to check out [React Navigation](https://reactnavigation.org/).\n\n## Contributing\n\nSee the [Contributors Guide](/CONTRIBUTING.md)\n\n## FAQ\n\nSee the [Frequently Asked Questions](/docs/FAQ.md) page\n\n## License\n\nThis project is licensed under the [MIT License](/LICENSE.md).\n",
-  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/airbnb/native-navigation.git"
