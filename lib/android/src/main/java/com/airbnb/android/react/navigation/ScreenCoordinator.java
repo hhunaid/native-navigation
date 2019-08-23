@@ -115,7 +115,7 @@ public class ScreenCoordinator {
             .hide(currentFragment)
             .add(container.getId(), fragment)
             .addToBackStack(null)
-            .commit();
+            .commitAllowingStateLoss();
     bsi.pushFragment(fragment);
     Log.d(TAG, toString());
   }
@@ -192,7 +192,7 @@ public class ScreenCoordinator {
     ft
         .add(container.getId(), fragment)
         .addToBackStack(bsi.getTag())
-        .commit();
+        .commitAllowingStateLoss();
     activity.getSupportFragmentManager().executePendingTransactions();
     bsi.pushFragment(fragment);
     Log.d(TAG, toString());
@@ -211,7 +211,7 @@ public class ScreenCoordinator {
         .setAllowOptimization(true)
         .add(container.getId(), fragment)
         .addToBackStack(bsi.getTag())
-        .commit();
+        .commitAllowingStateLoss();
     activity.getSupportFragmentManager().executePendingTransactions();
     activity.supportPostponeEnterTransition();
     bsi.pushFragment(fragment);
