@@ -167,12 +167,11 @@ open class ReactTabBarController: UITabBarController {
     tabViews = next
 
     let nullableViewControllers = tabViews.map { $0.getViewController() }
-    let viewControllers = nullableViewControllers.flatMap { $0 }
+    let viewControllers = nullableViewControllers.compactMap { $0 }
     self.setViewControllers(viewControllers, animated: true)
   }
 }
 
-private let DELAY: Int64 = Int64(1.2 * Double(NSEC_PER_SEC))
 private var IN_PROGRESS: Bool = false
 
 extension ReactTabBarController: UITabBarControllerDelegate {
