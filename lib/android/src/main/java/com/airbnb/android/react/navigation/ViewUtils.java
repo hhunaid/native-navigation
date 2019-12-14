@@ -8,9 +8,6 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.BatteryManager;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -25,6 +22,10 @@ import com.airbnb.android.R;
 
 import java.util.List;
 import java.util.Stack;
+
+import androidx.annotation.Nullable;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
 
 public final class ViewUtils {
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -17,9 +16,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.Nullable;
+
 import static com.airbnb.android.react.navigation.ReactNativeIntents.EXTRA_IS_DISMISS;
-import static com.airbnb.android.react.navigation.ScreenCoordinator.EXTRA_PAYLOAD;
 import static com.airbnb.android.react.navigation.ReactNativeUtils.VERSION_CONSTANT_KEY;
+import static com.airbnb.android.react.navigation.ScreenCoordinator.EXTRA_PAYLOAD;
 
 class NavigatorModule extends ReactContextBaseJavaModule {
   private static final int VERSION = 2;

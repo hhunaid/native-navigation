@@ -39,19 +39,19 @@ import React
 
 // this is a convenience class to allow us to easily assign lambdas as press handlers
 class BlockBarButtonItem: UIBarButtonItem {
-  var actionHandler: ((Void) -> Void)?
+    var actionHandler: (() -> () )?
 
-  convenience init(title: String?, style: UIBarButtonItemStyle) {
+  convenience init(title: String?, style: UIBarButtonItem.Style) {
     self.init(title: title, style: style, target: nil, action: #selector(barButtonItemPressed))
     self.target = self
   }
 
-  convenience init(image: UIImage?, style: UIBarButtonItemStyle) {
+  convenience init(image: UIImage?, style: UIBarButtonItem.Style) {
     self.init(image: image, style: style, target: nil, action: #selector(barButtonItemPressed))
     self.target = self
   }
 
-  convenience init(barButtonSystemItem: UIBarButtonSystemItem) {
+  convenience init(barButtonSystemItem: UIBarButtonItem.SystemItem) {
     self.init(barButtonSystemItem: barButtonSystemItem, target: nil, action: #selector(barButtonItemPressed))
     self.target = self
   }
@@ -59,8 +59,8 @@ class BlockBarButtonItem: UIBarButtonItem {
   convenience init(
     title: String?,
     image: UIImage?,
-    barButtonSystemItem: UIBarButtonSystemItem?,
-    style: UIBarButtonItemStyle,
+    barButtonSystemItem: UIBarButtonItem.SystemItem?,
+    style: UIBarButtonItem.Style,
     enabled: Bool?,
     tintColor: UIColor?,
     titleTextAttributes: [String: Any]?
@@ -80,7 +80,7 @@ class BlockBarButtonItem: UIBarButtonItem {
     }
     if let titleTextAttributes = titleTextAttributes {
       // TODO(lmr): what about other control states? do we care?
-      setTitleTextAttributes(titleTextAttributes, for: .normal)
+      setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary(titleTextAttributes), for: .normal)
     }
   }
 
@@ -193,14 +193,14 @@ func imageForKey(_ key: String, _ props: [String: AnyObject]) -> UIImage? {
   return nil
 }
 
-func barButtonStyleFromString(_ string: String?) -> UIBarButtonItemStyle {
+func barButtonStyleFromString(_ string: String?) -> UIBarButtonItem.Style {
   switch(string) {
   case .some("done"): return .done
   default: return .plain
   }
 }
 
-func barButtonSystemItemFromString(_ string: String?) -> UIBarButtonSystemItem? {
+func barButtonSystemItemFromString(_ string: String?) -> UIBarButtonItem.SystemItem? {
   switch string {
   case .some("done"): return .done
   case .some("cancel"): return .cancel
@@ -251,16 +251,16 @@ func textAttributesFromPrefix(
 ) -> [String: Any]? {
   var attributes: [String: Any] = [:]
   if let color = colorForKey("\(prefix)Color", props) {
-    attributes[NSForegroundColorAttributeName] = color
+    attributes[convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor)] = color
   } else if let color = colorForKey("foregroundColor", props) {
-    attributes[NSForegroundColorAttributeName] = color
+    attributes[convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor)] = color
   }
   let fontName = stringForKey("\(prefix)FontName", props)
   let fontSize = floatForKey("\(prefix)FontSize", props)
   // TODO(lmr): use system font if no fontname is given
   if let name = fontName, let size = fontSize {
     if let font = UIFont(name: name, size: size) {
-      attributes[NSFontAttributeName] = font
+      attributes[convertFromNSAttributedStringKey(NSAttributedString.Key.font)] = font
     }
   }
   return attributes.count == 0 ? nil : attributes
@@ -581,7 +581,7 @@ open class DefaultReactNavigationImplementation: ReactNavigationImplementation {
         let navBar = navController.navigationBar
         
         if let titleAttributes = textAttributesFromPrefix("title", next) {
-            navBar.titleTextAttributes = titleAttributes
+            navBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(titleAttributes)
         }
         
         if let backIndicatorImage = imageForKey("backIndicatorImage", next) {
@@ -711,4 +711,15 @@ func titleAndSubtitleViewFromProps(_ props: [String: AnyObject]) -> UIView? {
   }
 
   return titleView
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

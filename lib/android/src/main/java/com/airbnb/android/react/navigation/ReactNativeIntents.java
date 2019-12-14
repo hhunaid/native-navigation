@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.view.ViewGroup;
 
 import com.airbnb.android.R;
 import com.facebook.react.ReactRootView;
 import com.facebook.react.bridge.ReadableMap;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityOptionsCompat;
 
 public final class ReactNativeIntents {
   static final String EXTRA_MODULE_NAME = "REACT_MODULE_NAME";

@@ -1,12 +1,13 @@
 package com.airbnb.android.react.navigation;
 
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.ViewTreeObserver;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.devsupport.DoubleTapReloadRecognizer;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class ReactAwareActivity extends AppCompatActivity
         implements ReactAwareActivityFacade, DefaultHardwareBackBtnHandler {
